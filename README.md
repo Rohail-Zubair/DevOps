@@ -36,21 +36,7 @@ A proper directory structure is critical for organizing and scaling Terraform co
 
 ### **Example**
 
-project-name
-├── dev
-│   ├── main.tf
-│   ├── variables.tf
-│   └── output.tf
-├── modules
-│   ├── vpc
-│   │   └── main.tf
-│   └── compute
-│       └── main.tf
-└── prod
-    ├── main.tf
-    ├── variables.tf
-    └── output.tf
-
+<pre> project-name ├── dev │ ├── main.tf │ ├── variables.tf │ └── output.tf ├── modules │ ├── vpc │ │ └── main.tf │ └── compute │ └── main.tf └── prod ├── main.tf ├── variables.tf └── output.tf </pre>
 
 ---
 
