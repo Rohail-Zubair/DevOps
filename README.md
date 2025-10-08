@@ -1,6 +1,6 @@
 # <b>Terraform Best Practices</b> 
 
-**Directory Structure and Organization**
+## Directory Structure and Organization
 A proper directory structure is critical for organizing and scaling Terraform configuration:
 1 - Separate infrastructure into environments (dev, staging, prod) with separate state files and datasources.
 2 - Modularize configs by infrastructure layers (network, compute, database etc.) or features to improve readability and reusability. Each module should handle one feature or layer.
@@ -9,7 +9,7 @@ A proper directory structure is critical for organizing and scaling Terraform co
 5 - Create one folder per environment (/dev, /staging, /prod) containing that environment’s main.tf, variables.tf etc. files.
 
 
-*EXAMPLE*
+### EXAMPLE
 
 project-name
 ├── dev
@@ -27,7 +27,7 @@ project-name
 │   ├── output.tf
 
 
-**Modular Design**
+## Modular Design
 Modular design allows you to break your Terraform config into reusable, composable blocks called modules. Modules improve code organization, reusability, abstraction, and encapsulation.
 
 Here are some best practices around using modules effectively:
@@ -41,7 +41,7 @@ Here are some best practices around using modules effectively:
 7 - Use module outputs instead of data sources to access module attributes to hide module internals.
 8 - Version modules using semantic versioning for easier upgrades and governance.
 
-*EXAMPLE*
+### EXAMPLE
 
 project-name
 ├── modules
@@ -55,7 +55,7 @@ project-name
 │   │   ├── output.tf
 
 
-**Testing** 
+## Testing 
 Testing infrastructure code is critical to prevent errors and ensure reliable deployments. Here are some best practices around testing Terraform code:
 
 1 - Use Terratest to test modules and infrastructure behavior with automated tests e.g. checking module outputs, testing eventual consistency etc.
@@ -67,7 +67,7 @@ Testing infrastructure code is critical to prevent errors and ensure reliable de
 7 - Use linting with terraform fmt to enforce code style and make tests more reliable due to less variability.
 
 
-**Collaboration and Sharing**
+## Collaboration and Sharing
 Collaborating effectively is key to successful infrastructure delivery in teams. Here some some best practices around collaborating on Terraform code:
 
 1 - Use Terraform Cloud workspaces for state sharing and locking across a team. Remote state storage facilitates collaboration.
@@ -79,7 +79,7 @@ Collaborating effectively is key to successful infrastructure delivery in teams.
 7 - Document modules extensively with input/output vars, best practices per cloud to support usage across teams.
 
 
-**Security**
+## Security
 Incorporating security practices into Terraform code is critical for safe infrastructure provisioning by avoiding exposure to risks and threats. Here are some security best practices:
 
 1 - Use variable types e.g. string for sensitive values to avoid exposure inside state file or logs. Store actual values in vault.
@@ -91,7 +91,7 @@ Incorporating security practices into Terraform code is critical for safe infras
 7 - Enforce code reviews for infrastructure changes along with automated policy checks to catch issues earlier.
 
 
-**Reusability**
+## Reusability
 Reusable components allow teams to build reliable infrastructure faster through composition vs starting from scratch. Here are some best practices around reusability:
 
 1 - Build modular components with reusability as the first principle. Standardize interfaces using inputs and outputs.
@@ -102,7 +102,7 @@ Reusable components allow teams to build reliable infrastructure faster through 
 6 - Provide integrated experience via validated reference architectures using certified modules avoiding gluing modules on an ad hoc basis.
 7 - Invest in modules built and supported by platform teams as “certified modules” serving as the building blocks for the organization.
 
-**Tool Integration**
+## Tool Integration 
 Integrating complementary tooling into the Terraform workflow multiplies productivity through automation around workflows spanning authoring, testing, collaboration, governance etc. Here are some useful integrations worth setting up:
 
 1 - *Version control (Git)* — For change tracking, collaboration, review enforcement. Also enables advanced GitOps workflows.
@@ -112,7 +112,7 @@ Integrating complementary tooling into the Terraform workflow multiplies product
 5 - *Terraform Cloud* — For remote state management, access controls, variables management across environments and workspaces.
 
 
-**Documentation**
+## Documentation
 Extensive documentation is critical for infrastructure code discoverability, onboarding, coordination across teams and general usability even for modules intended for internal use. Here are some documentation best practices:
 
 1 - Document modules using the Terraform registry format with inputs, outputs, usage, examples etc. Treat documentation as first-class citizens.
@@ -122,7 +122,7 @@ Extensive documentation is critical for infrastructure code discoverability, onb
 5 - Over-communicate warnings, gotchas etc. to lower user expectations e.g. max resource thresholds before use, key requirements like IAM permissions needed for successful provisioning.
 
 
-**Deployment**
+## Deployment 
 Standardizing and automating Terraform deployment improves reliability and efficiency significantly. Some key practices include:
 
 1 - Fully automate deployments via CI/CD pipelines invoking Terraform commands rather than local ad-hoc execution. Applies across dev, staging and prod.
@@ -133,7 +133,7 @@ Standardizing and automating Terraform deployment improves reliability and effic
 6 - Follow blast radius minimization principle across modules, test groups etc. to confine failures during changes or new feature rollout.
 
 
-**Cost Estimation**
+## Cost Estimation
 Infrastructure costs can pile up quickly if left unchecked. Here are some tips around keeping cloud costs in control:
 
 1 - Use Terraform cost estimation capabilities before provisioning resources to get size of bill and fine tune configs.
@@ -144,7 +144,7 @@ Infrastructure costs can pile up quickly if left unchecked. Here are some tips a
 6 - Enforce tagging standards via code for ownership, environments etc. Terraform enables bulk tagging.
 
 
-**Version Control**
+## Version Control
 Maintaining Terraform config in VCS brings discipline, collaboration benefits common for software code:
 
 1 - Enforce code reviews for all changes to keep quality high and minimize configuration drift across environments.
@@ -154,7 +154,7 @@ Maintaining Terraform config in VCS brings discipline, collaboration benefits co
 5 - Treat infrastructure configs with same rigor as application code changes since they can directly impact application reliability and availability.
 
 
-**Backend Configuration**
+## Backend Configuration
 Choosing the right backend and configuring it appropriately avoids state related risks down the road:
 
 1 - Use Terraform cloud as backend by default even for smaller projects to benefit from always fresh state, access controls, change history etc.
@@ -164,7 +164,7 @@ Choosing the right backend and configuring it appropriately avoids state related
 5 - Secure access keys for remote state with short lifetimes and least privilege permissions to minimize blast radius of any credential compromises.
 
 
-**Input and Output Values**
+## Input and Output Values
 Standardizing usage of input and output variables establishes consistency across modules. It also avoids hardcoding values making modules non-reusable.
 Best practices around managing inputs and outputs:
 
@@ -176,7 +176,7 @@ Best practices around managing inputs and outputs:
 6 - Follow Terraform recommended naming like snake_case for vars/outputs, using underscores, lowercase etc improve consistency.
 
 
-**Code Formatting and Linting**
+## Code Formatting and Linting
 Formatting standards like ordering of blocks, indentation, whitespace usage etc improve code quality and readability over time as configurations grow large spanning hundreds of resources.
 Here are some code styling best practices worth implementing:
 
@@ -186,7 +186,7 @@ Here are some code styling best practices worth implementing:
 4 - Disable auto formatting capabilities of editors and rely exclusively only terraform fmt for formatting to prevent fragmenting of styles.
 
 
-**Logging and Monitoring**
+## Logging and Monitoring
 Insight into infrastructure state and changes is vital for debugging issues faster and meeting compliance needs:
 
 1 - Enable resource level logging across modules and aggregate via services like Splunk, Datadog etc. for single pane of glass visibility.
@@ -195,7 +195,7 @@ Insight into infrastructure state and changes is vital for debugging issues fast
 4 - Integrate Terraform state storage backends like Terraform Cloud with internal systems to expose current infrastructure state for governance needs.
 
 
-**Error Handling**
+## Error Handling
 Robust error handling ensures system integrity and avoids progressing in unsound state potentially leading to catastrophic subsequent failures:
 Incorporation error handling best practices:
 
@@ -206,7 +206,7 @@ Incorporation error handling best practices:
 5 - Exercise rollback workflows from backups to validate recovery process periodically before encountering real failures needing rollbacks.
 
 
-**Production Readiness**
+## Production Readiness
 Additional measures should be undertaken before exposing any infrastructure or application changes directly to production to minimize risks amidst real usage:
 
 1 - Validate production readiness via orchestrated health checks at infrastructure and application levels to fail early in case of any gaps.
