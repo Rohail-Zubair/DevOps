@@ -38,19 +38,18 @@ A proper directory structure is critical for organizing and scaling Terraform co
 
 project-name
 ├── dev
-│ ├── main.tf
-│ ├── variables.tf
-│ ├── output.tf
+│   ├── main.tf
+│   ├── variables.tf
+│   └── output.tf
 ├── modules
-│ ├── vpc
-│ │ ├── main.tf
-│ ├── compute
-│ │ ├── main.tf
-├── prod
-│ ├── main.tf
-│ ├── variables.tf
-│ ├── output.tf
-
+│   ├── vpc
+│   │   └── main.tf
+│   └── compute
+│       └── main.tf
+└── prod
+    ├── main.tf
+    ├── variables.tf
+    └── output.tf
 
 ---
 
@@ -73,15 +72,14 @@ Modular design allows you to break Terraform configuration into reusable, compos
 
 project-name
 ├── modules
-│ ├── vpc
-│ │ ├── main.tf
-│ │ ├── variables.tf
-│ │ ├── output.tf
-│ ├── compute
-│ │ ├── main.tf
-│ │ ├── variables.tf
-│ │ ├── output.tf
-
+│   ├── vpc
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── output.tf
+│   └── compute
+│       ├── main.tf
+│       ├── variables.tf
+│       └── output.tf
 
 ---
 
